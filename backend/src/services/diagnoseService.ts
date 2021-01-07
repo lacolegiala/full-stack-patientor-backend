@@ -1,6 +1,10 @@
-import diagnoses from '../../data/diagnoses.json'
+import diagnosisData from '../../data/diagnoses.json'
+import { Diagnosis } from '../types'
 
-const getDiagnoses = () => {
+
+const diagnoses: Diagnosis[] = diagnosisData
+
+const getDiagnoses = (): Diagnosis[] => {
   return diagnoses
 }
 
