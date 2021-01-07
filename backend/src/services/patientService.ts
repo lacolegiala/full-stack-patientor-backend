@@ -1,7 +1,7 @@
-import patientData from '../../data/patients.json'
+import patientData from '../../data/patients'
 import { Patient } from '../types'
 
-const patients: Patient[] = patientData as Patient[]
+const patients: Patient[] = patientData
 
 const getPatients = (): Patient[] => {
   return patients
