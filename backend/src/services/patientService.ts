@@ -1,10 +1,16 @@
 import patientData from '../../data/patients'
 import { Patient } from '../types'
 
-const patients: Patient[] = patientData
+type PatientWithoutSsn = Omit<Patient, 'ssn'>
 
-const getPatients = (): Patient[] => {
-  return patients
+const getPatients = (): PatientWithoutSsn[] => {
+  return patientData.map(({ id, name, dateOfBirth, gender, occupation}) => ({
+    id,
+    name,
+    dateOfBirth,
+    gender,
+    occupation
+  }))
 }
 
 export default getPatients
