@@ -1,10 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import diagnoses from '../data/diagnoses.json'
-import patients from '../data/patients.json'
-
-const diagnosesFromJson = diagnoses 
-const patientsFromJson = patients
+import diagnoseRouter from './routes/diagnoseRoutes'
+import patientRouter from './routes/patientRoutes'
 
 const app = express();
 
@@ -18,13 +15,9 @@ app.get('/api/ping', (_req, res) => {
   res.send('pong');
 });
 
-app.get('/api/diagnoses', (_req, res) => {
-  res.send(diagnosesFromJson)
-})
+app.use('/api/diagnoses', diagnoseRouter)
 
-app.get('/api/patients', (_req, res) => {
-  res.send(patientsFromJson)
-})
+app.use('/api/patients', patientRouter)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
