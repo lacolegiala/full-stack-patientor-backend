@@ -1,4 +1,4 @@
-import { Diagnosis } from '../src/types'
+import { Diagnosis } from '../src/types';
 
 const diagnoses: Diagnosis[] = [
   {
@@ -78,6 +78,6 @@ const diagnoses: Diagnosis[] = [
     "name": "Other proliferative retinopathy",
     "latin": "Alia retinopathia proliferativa"
   }
-]
+];
 
-export default diagnoses
+export default diagnoses;

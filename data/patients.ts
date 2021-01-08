@@ -1,4 +1,4 @@
-import { Patient } from '../src/types'
+import { Patient } from '../src/types';
 
 const patients: Patient[] = [
   {
@@ -41,6 +41,6 @@ const patients: Patient[] = [
       "gender": "male",
       "occupation": "Digital evangelist"
   }
-]
+];
 
-export default patients
+export default patients;
