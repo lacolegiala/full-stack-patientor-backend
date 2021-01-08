@@ -11,23 +11,15 @@ router.get('/', (_req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // const { name, dateOfBirth, ssn, gender, occupation } = req.body as NewPatient;
   try {
     const newPatient = toNewPatient(req.body);
 
     const addedPatient = patientService.addPatient(newPatient);
     res.json(addedPatient);
   } catch (error) {
-    res.status(400).send(error);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    res.status(400).send({error: error.message});
   }
-  // const newPatient = patientService.addPatient({
-  //   name,
-  //   dateOfBirth,
-  //   ssn,
-  //   gender,
-  //   occupation
-  // });
-  // res.json(newPatient);
 });
 
 export default router;
