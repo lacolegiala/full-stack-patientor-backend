@@ -23,7 +23,6 @@ const parseStringField = (field: any): string => {
 
 const parseDate = (date: any): string => {
   if (!date || !isString(date) ||!isDate(date)) {
-    console.log('this is date', date);
     throw new Error('Incorrect or missing date');
   }
   return date;
