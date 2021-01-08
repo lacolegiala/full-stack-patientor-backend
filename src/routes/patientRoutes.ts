@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import express from 'express';
 
 import patientService from '../services/patientService';
