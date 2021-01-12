@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Gender, NewPatient } from '../types';
+import { Gender, NewPatient, Entry } from '../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
