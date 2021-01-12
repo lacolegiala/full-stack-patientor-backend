@@ -1,16 +1,21 @@
-import patientData from '../../data/patients';
-import { NewPatient, Patient } from '../types';
+import patientData from '../data/patients';
+import { NewPatient, Patient, PublicPatient } from '../types';
 
-type PatientWithoutSsn = Omit<Patient, 'ssn'>;
-
-const getPatients = (): PatientWithoutSsn[] => {
-  return patientData.map(({ id, name, dateOfBirth, gender, occupation}) => ({
+const getPatients = (): PublicPatient[] => {
+  return patientData.map(({ id, name, dateOfBirth, gender, occupation }) => ({
     id,
     name,
     dateOfBirth,
     gender,
     occupation
   }));
+};
+
+const getOnePatient = ( id: string ): Patient => {
+  const wantedPatient = patientData.filter(patient =>
+    patient.id === id  
+  );
+  return wantedPatient[0];
 };
 
 const addPatient = ( patient: NewPatient ): Patient => {
@@ -23,4 +28,4 @@ const addPatient = ( patient: NewPatient ): Patient => {
   return newPatient;
 };
 
-export default {getPatients, addPatient};
+export default {getPatients, addPatient, getOnePatient};
