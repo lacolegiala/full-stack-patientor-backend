@@ -11,14 +11,13 @@ const getPatients = (): PublicPatient[] => {
   }));
 };
 
-const getOnePatient = ( id: string ): Patient => {
-  const wantedPatient = patientData.filter(patient =>
+const getOnePatient = (id: string): Patient | undefined => {
+  return patientData.find(patient =>
     patient.id === id  
   );
-  return wantedPatient[0];
 };
 
-const addPatient = ( patient: NewPatient ): Patient => {
+const addPatient = (patient: NewPatient): Patient => {
   const newPatient = {
     id: Math.random().toString(36).substr(2, 9),
     ...patient

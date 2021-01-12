@@ -11,7 +11,14 @@ router.get('/', (_req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  res.send(patientService.getOnePatient(req.params.id));
+
+  const foundPatient = patientService.getOnePatient(req.params.id);
+  if (foundPatient) {
+    res.send(foundPatient);
+  }
+  else {
+    res.status(404).send({error: 'No patient was found on this id'});
+  }
 });
 
 router.post('/', (req, res) => {
