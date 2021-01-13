@@ -20,6 +20,7 @@ const getOnePatient = (id: string): Patient | undefined => {
 const addPatient = (patient: NewPatient): Patient => {
   const newPatient = {
     id: Math.random().toString(36).substr(2, 9),
+    entries: [],
     ...patient
   };
 

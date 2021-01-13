@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Gender, NewPatient, Entry } from '../types';
+import { Gender, NewPatient } from '../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -10,7 +10,7 @@ const toNewPatient = (object: any): NewPatient => {
     ssn: parseStringField(object.ssn),
     gender: parseGender(object.gender),
     occupation: parseStringField(object.occupation),
-    entries: parseArray(object.entries)
+    // entries: parseArray(object.entries)
   };
   return newPatient;
 };
@@ -36,12 +36,12 @@ const parseGender = (gender: any): Gender => {
   return gender;
 };
 
-const parseArray = (array: any): Entry[] => {
-  if (!array || !isEntryArray(array)) {
-    throw new Error('Incorrect or missing array');
-  }
-  return array;
-};
+// const parseArray = (array: any): Entry[] => {
+//   if (!array || !isEntryArray(array)) {
+//     throw new Error('Incorrect or missing array');
+//   }
+//   return array;
+// };
 
 const isString = (text: any): text is string => {
   return typeof text === 'string' || text instanceof String;
@@ -55,8 +55,8 @@ const isGender = (param: any): param is Gender => {
   return Object.values(Gender).includes(param);
 };
 
-const isEntryArray = (param: any): param is Entry[] => {
-  return param as Entry[] !== undefined;
-};
+// const isEntryArray = (param: any): param is Entry[] => {
+//   return param as Entry[] !== undefined;
+// };
 
 export default toNewPatient;
