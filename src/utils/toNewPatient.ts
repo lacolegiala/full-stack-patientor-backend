@@ -10,7 +10,7 @@ const toNewPatient = (object: any): NewPatient => {
     ssn: parseStringField(object.ssn),
     gender: parseGender(object.gender),
     occupation: parseStringField(object.occupation),
-    // entries: parseArray(object.entries)
+    entries: []
   };
   return newPatient;
 };
@@ -36,13 +36,6 @@ const parseGender = (gender: any): Gender => {
   return gender;
 };
 
-// const parseArray = (array: any): Entry[] => {
-//   if (!array || !isEntryArray(array)) {
-//     throw new Error('Incorrect or missing array');
-//   }
-//   return array;
-// };
-
 const isString = (text: any): text is string => {
   return typeof text === 'string' || text instanceof String;
 };
@@ -54,9 +47,5 @@ const isDate = (date: string): boolean => {
 const isGender = (param: any): param is Gender => {
   return Object.values(Gender).includes(param);
 };
-
-// const isEntryArray = (param: any): param is Entry[] => {
-//   return param as Entry[] !== undefined;
-// };
 
 export default toNewPatient;
