@@ -38,7 +38,7 @@ const parseGender = (gender: any): Gender => {
 
 const parseEntryArray = (entries: unknown): Entry[] => {
   if (Array.isArray(entries)) {
-    (entries as Entry[]).forEach(entry => {
+    entries.forEach(entry => {
       if (!isEntry(entry)) {
         throw new Error('Array contains values that are not valid as entries');
       }
