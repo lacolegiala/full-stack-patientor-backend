@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Gender, NewPatient } from '../types';
+import { Entry, Gender, NewPatient } from '../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -10,7 +10,7 @@ const toNewPatient = (object: any): NewPatient => {
     ssn: parseStringField(object.ssn),
     gender: parseGender(object.gender),
     occupation: parseStringField(object.occupation),
-    entries: []
+    entries: parseEntryArray(object.entries)
   };
   return newPatient;
 };
@@ -36,6 +36,20 @@ const parseGender = (gender: any): Gender => {
   return gender;
 };
 
+const parseEntryArray = (entries: unknown): Entry[] => {
+  if (Array.isArray(entries)) {
+    (entries as Entry[]).forEach(entry => {
+      if (!isEntry(entry)) {
+        throw new Error('Array contains values that are not valid as entries');
+      }
+    });
+    return (entries as Entry[]);
+  }
+  else {
+    throw new Error('Missing entry array');
+  }
+};
+
 const isString = (text: any): text is string => {
   return typeof text === 'string' || text instanceof String;
 };
@@ -46,6 +60,12 @@ const isDate = (date: string): boolean => {
 
 const isGender = (param: any): param is Gender => {
   return Object.values(Gender).includes(param);
+};
+
+const isEntry = (entry: unknown): entry is Entry => {
+  return (entry as Entry).type === "Hospital" 
+    || (entry as Entry).type === "OccupationalHealthcare"
+    || (entry as Entry).type === "HealthCheck";
 };
 
 export default toNewPatient;

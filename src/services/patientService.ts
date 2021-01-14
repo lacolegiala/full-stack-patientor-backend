@@ -2,12 +2,13 @@ import patientData from '../data/patients';
 import { NewPatient, Patient, PublicPatient } from '../types';
 
 const getPatients = (): PublicPatient[] => {
-  return patientData.map(({ id, name, dateOfBirth, gender, occupation }) => ({
+  return patientData.map(({ id, name, dateOfBirth, gender, occupation, entries }) => ({
     id,
     name,
     dateOfBirth,
     gender,
-    occupation
+    occupation,
+    entries
   }));
 };
 
@@ -22,7 +23,6 @@ const addPatient = (patient: NewPatient): Patient => {
     id: Math.random().toString(36).substr(2, 9),
     ...patient
   };
-
   patientData.push(newPatient);
   return newPatient;
 };
