@@ -34,8 +34,13 @@ const addEntry = (id: string, entry: NewHospitalEntry | NewHealthCheckEntry | Ne
     id: Math.random().toString(36).substr(2, 9)
   };
   const patient = getOnePatient(id);
-  patient?.entries.push(newEntry);
-  return newEntry;
+  if (patient) {
+    patient?.entries.push(newEntry);
+    return newEntry;
+  }
+  else {
+    throw new Error('Patient not found on given id');
+  }
 };
 
 export default {getPatients, addPatient, getOnePatient, addEntry};
