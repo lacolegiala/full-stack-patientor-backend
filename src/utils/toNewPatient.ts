@@ -62,7 +62,7 @@ const isGender = (param: any): param is Gender => {
   return Object.values(Gender).includes(param);
 };
 
-const isEntry = (entry: unknown): entry is Entry => {
+export const isEntry = (entry: unknown): entry is Entry => {
   return (entry as Entry).type === "Hospital" 
     || (entry as Entry).type === "OccupationalHealthcare"
     || (entry as Entry).type === "HealthCheck";
