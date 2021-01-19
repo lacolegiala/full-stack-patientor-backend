@@ -63,9 +63,12 @@ const isGender = (param: any): param is Gender => {
 };
 
 export const isEntry = (entry: unknown): entry is Entry => {
-  return (entry as Entry).type === "Hospital" 
-    || (entry as Entry).type === "OccupationalHealthcare"
-    || (entry as Entry).type === "HealthCheck";
+  const entryAsEntry = entry as Entry;
+  const typeIsRight = entryAsEntry.type === "Hospital" 
+  || entryAsEntry.type === "OccupationalHealthcare"
+  || entryAsEntry.type === "HealthCheck";
+  return typeIsRight && entryAsEntry.date !== undefined
+  && entryAsEntry.description !== undefined && entryAsEntry.specialist !== undefined;
 };
 
 export default toNewPatient;
