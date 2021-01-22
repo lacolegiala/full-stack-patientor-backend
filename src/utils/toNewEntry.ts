@@ -21,7 +21,11 @@ const toNewEntry = (entry: unknown): NewHealthCheckEntry | NewHospitalEntry | Ne
       specialist: entry.specialist,
       diagnosisCodes: entry.diagnosisCodes,
       employerName: entry.employerName,
-      sickLeave: entry.sickLeave,
+      sickLeave: entry.sickLeave ? {
+        startDate: entry.sickLeave.startDate,
+        endDate: entry.sickLeave.endDate
+      }
+      : undefined
     };
     return newEntry;
   }
